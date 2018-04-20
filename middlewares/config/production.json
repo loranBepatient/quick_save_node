@@ -1,0 +1,6 @@
+{
+    "name": "Express App - PRODUCTION",
+    "mail": {
+        "adress": "prod.mail.server"
+    }
+}

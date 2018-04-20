@@ -1,0 +1,24 @@
+{
+  "name": "middlewares",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "DEBUG=app:startup nodemon app.js",
+    "prod": "DEBUG= nodemon app.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.16.3",
+    "helmet": "^3.12.0",
+    "joi": "^13.1.2"
+  },
+  "devDependencies": {
+    "config": "^1.30.0",
+    "debug": "^3.1.0",
+    "morgan": "^1.9.0"
+  }
+}
