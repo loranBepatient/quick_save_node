@@ -2,18 +2,13 @@ const { Genre, validate } = require('../models/genre');
 const mongoose = require('mongoose');
 const express = require('express');
 const router = express.Router();
-const asyncMiddleware = require('../middleware/async');
 const auth = require('../middleware/auth');
 const admin = require('../middleware/admin');
 
-router.get('/', async (req, res, next) => {
-  try {
-    const genres = await Genre.find().sort('name').select('-_id');
-    res.send(genres);
-  }
-  catch (exception) {
-    next(exception);
-  };
+router.get('/', async (req, res) => {
+  throw new Error('Could not get genres');
+  const genres = await Genre.find().sort('name').select('-_id')
+  res.send(genres);
 })
 
 router.post('/', auth, async (req, res) => {

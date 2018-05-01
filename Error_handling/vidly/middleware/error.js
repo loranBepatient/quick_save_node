@@ -1,3 +1,5 @@
-module.exports = (error, req, res, next) => {
-    res.status(500).status('something failed');
+const winston = require('winston');
+module.exports = function (err, req, res, next) {
+    winston.error(err.message, err)
+    res.status(500).send(err.message)
 }
