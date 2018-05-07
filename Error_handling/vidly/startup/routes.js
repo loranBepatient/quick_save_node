@@ -1,4 +1,6 @@
 const genres = require('../routes/genres');
+const config = require('config');
+const morgan = require('morgan');
 const customers = require('../routes/customers');
 const movies = require('../routes/movies');
 const rentals = require('../routes/rentals');
@@ -7,12 +9,14 @@ const auth = require('../routes/auth');
 const error = require('../middleware/error')
 
 module.exports = (app,express) => {
-    
-    app.use(function (req, res, next) {
-        res.header("Access-Control-Allow-Origin", "*");
-        res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-        next();
-    });
+    if (config.get('env') === 'development') {
+        app.use(morgan('tiny'));
+        app.use(function (req, res, next) {
+            res.header("Access-Control-Allow-Origin", "*");
+            res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+            next();
+        });
+    }
 
     app.use(express.json());
     app.use('/api/genres', genres);

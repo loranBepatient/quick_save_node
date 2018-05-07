@@ -1,0 +1,6 @@
+{
+    "name": "Vidly App",
+    "jwtPrivateKey": "",
+    "env": "production",
+    "db": "mongodb://localhost/production"
+}

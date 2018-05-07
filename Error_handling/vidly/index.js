@@ -1,5 +1,6 @@
 require('express-async-errors');
 require('winston-mongodb');
+const appDebugger = require('debug')('app:vidly');
 const winston = require('winston');
 const Joi = require('joi');
 const config = require('config');
@@ -28,5 +29,8 @@ if (!config.get('jwtPrivateKey')) {
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => {
-  console.log(`Listening on port ${port}...`)
+  appDebugger(`
+   ${config.get('name')} Listening on port ${port}...
+       Environment: ${config.get('env')}
+  `)
 });
